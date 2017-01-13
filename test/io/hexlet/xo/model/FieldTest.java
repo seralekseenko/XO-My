@@ -1,5 +1,6 @@
 package io.hexlet.xo.model;
 
+import io.hexlet.xo.model.exceptions.InvalidPointException;
 import org.junit.Test;
 
 import java.awt.*;
@@ -7,7 +8,7 @@ import java.awt.*;
 import static org.junit.Assert.*;
 
 /**
- * Created by User on 13.01.2017.
+ * Created by Seralekseenko on 13.01.2017 at time 17:44.
  */
 public class FieldTest {
     @Test
@@ -27,4 +28,31 @@ public class FieldTest {
         assertEquals(inputFigure, actualFigure);
     }
 
+    @Test
+    public void testGetFigureWhenFigureIsNotSet() throws Exception {
+        final Field field = new Field();
+        final Point inputP = new Point(0, 0);
+
+        final Figure actualFigure = field.getFigure(inputP);
+
+        assertNull(actualFigure);
+    }
+
+    @Test
+    public void testGetFigureWhenPointIsIncorrect() throws Exception {
+        final Field field = new Field();
+        final Point[] arrayBadPoints  = new Point[]{
+                new Point(-1, 0), new Point(0, -1),
+                new Point(field.getSize() + 1, 0),
+                new Point(0, field.getSize() + 1),
+                new Point(-1, field.getSize() + 1)};
+
+        for (Point p : arrayBadPoints ) {
+            try {
+                field.getFigure(p);
+                fail();
+            } catch (final InvalidPointException e) {}
+        }
+
+    }
 }
