@@ -26,6 +26,7 @@ public class FieldTest {
         final Figure actualFigure = field.getFigure(inputP);
         assertEquals(inputFigure, actualFigure);
     }
+
     @Test
     public void testSetFigureWhenAlreadyOccupied() throws Exception {
         final Field field = new Field();
