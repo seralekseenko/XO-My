@@ -27,18 +27,7 @@ public class FieldTest {
         assertEquals(inputFigure, actualFigure);
     }
 
-    @Test
-    public void testSetFigureWhenAlreadyOccupied() throws Exception {
-        final Field field = new Field();
-        final Point inputP = new Point(0, 0);
-        final Figure inputFigure = Figure.O;
 
-        field.setFigure(inputP, inputFigure);
-        try {
-            field.setFigure(inputP, inputFigure);
-            fail();
-        } catch (final AlreadyOccupiedException e) {}
-    }
 
     @Test
     public void testGetFigureWhenFigureIsNotSet() throws Exception {
