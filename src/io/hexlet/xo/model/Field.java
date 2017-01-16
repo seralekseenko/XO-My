@@ -9,11 +9,16 @@ import java.awt.*;
 
 public class Field {
 
-    private static final int FIELD_SIZE = 3;
     private static final int MIN_COORDINATE = 0;
-    private static final int MAX_COORDINATE = FIELD_SIZE;
 
-    private final Figure[][] field = new Figure[FIELD_SIZE][FIELD_SIZE];
+    private final Figure[][] field;
+
+    private  final int fieldSize;
+
+    public Field(int fieldSize) {
+        this.fieldSize = fieldSize;
+        field = new Figure[fieldSize][fieldSize];
+    }
 
     public int getSize() {
         return field.length;
@@ -39,9 +44,9 @@ public class Field {
         /*final int x = point.x;
         final int y = point.y;*/
         if (point.x < MIN_COORDINATE
-                || point.x > MAX_COORDINATE
+                || point.x > field.length
                 || point.y < MIN_COORDINATE
-                || point.y > MAX_COORDINATE ) {
+                || point.y > field.length ) {
             return false;
         }
         return true;
