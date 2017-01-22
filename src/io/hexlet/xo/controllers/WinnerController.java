@@ -15,7 +15,7 @@ public class WinnerController {
             }
 
             for (int i = 0; i < 3; i++) {
-                if (check(field, new Point(i, 0), p -> new Point(p.x + 1, p.y)))
+                if (check(field, new Point(0, i), p -> new Point(p.x + 1, p.y)))
                 return field.getFigure(new Point(0, i));
             }
 
@@ -44,15 +44,18 @@ public class WinnerController {
         try {
             if (field.getFigure(p1) == null) return false;
             if (field.getFigure(p1) == field.getFigure(p2) &&
-                    field.getFigure(p1) == field.getFigure(p3)) {
+                    field.getFigure(p2) == field.getFigure(p3)) {
                 return true;
+            } else {
+                return false;
             }
+
         } catch (final InvalidPointException e) {
             e.printStackTrace();
         }
         return false;
     }
-    private static interface IPointChanger { //NESTED??
+    private static interface IPointChanger { //NESTED?? Это функциональный интерфейс??
         Point next(final Point p);
     }
 }
